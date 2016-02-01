@@ -25,7 +25,7 @@ The reasoning behind each style choice will be detailed where appropriate, howev
 * [Testing Helpers](#testing-helpers)
 * [Test File Structure](#test-file-structure)
 * [Failing CI Builds](#failing-ci-builds)
-* [Obj-C vs Swift](#objc--vs-swift)
+* [Obj-C vs Swift](#obj-c-vs-swift)
 * [Spacing](#spacing)
 * [Comments](#comments)
 * [Code organization](#code-organization)
@@ -83,7 +83,7 @@ Tests should initialize an instance that will be used for testing. This instance
 
 Tests should be named using the following format
 
-test_<Unit Being Tested>_<Context>_<Expected Result>
+test_Unit-Being-Tested_Context_Expected-Result
 
 Example func abs(_ x: Double) -> Double
 
