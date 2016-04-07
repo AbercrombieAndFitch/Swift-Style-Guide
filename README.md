@@ -159,7 +159,7 @@ Many of the projects will involve having to work with Obj-C and Swift. When work
 
 ## Spacing
 
-Indent code with tabs, not spaces. End files with an empty line.
+Indent using 4 spaces. Be sure to set this preference in Xcode.
 
 Vertical spaces should be used in long methods to separate its name from implementation. You may also want to use vertical spaces to separate logic within a function. Shorter methods (one or two lines) don't need such spacing.
 
