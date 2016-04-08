@@ -276,10 +276,12 @@ let even = filter(numbers) { $0 % 2 == 0 }
 Also, remember that global functions are closures and sometimes it's convenient to pass a function name as a closure.
 
 ```swift
-func isPositive(number: Int) -> Bool
+func isPositive(number: Int) -> Bool {
+    return number > 0
+}
 
 let numbers = [-1, 2, 3, -4, 5]
-let positive = filter(numbers, isPositive)
+let positive = numbers.filter(isPositive)
 ```
 
 When the body of a closure grows beyond three lines it is encouraged that the body be separated out to it's own function.
