@@ -152,7 +152,7 @@ CI builds will be set to fail for a change in any of the following metrics.
 - an increase in warnings
 - a decrease in code coverage
 
-It will be up to the developer who submitted the PR to address the issues and make sure the code is in a merge-able state before bringing it to the team for code review. 
+It will be up to the developer who submitted the PR to address the issues and make sure the code is in a merge-able state before bringing it to the team for code review.
 
 ## Obj-C vs Swift
 Many of the projects will involve having to work with Obj-C and Swift. When working with the two languages it will be left the developers discretion as to which language they should use. The overall goal will be to switch to Swift however if a code change is needed in the Obj-C files (and the change can be made quicker in Obj-C) it is encouraged to use Obj-C instead of taking the time to convert the file to Swift.
@@ -380,7 +380,42 @@ if let name = name, age = age where age >= 13 {
 }
 ```
 
-However, implicitly unwrapped optionals can sometimes be useful. They may be used in unit tests, where system under test should never be `nil`. There's no point executing rest of the tests if one of them fails.
+### Guard vs if-let
+When unwrapping `if-let` is preferred over `guard`. When doing multiple unwraps the following is preferred:
+
+```swift
+let name: String?
+let age: Int?
+
+if let name = name, age = age where age >= 13 {
+/* ... */
+}
+```
+
+Guard Syntax/Example:
+
+```swift
+let name: String?
+guard let safeName = name else {
+    return
+}
+```
+
+For the situation above the naming of the variable becomes risky and complex. By using `if-let` syntax listed above there is no risk of accidentally accessing the unwrapped variable or adding bulky qualifiers before a name.
+
+As with other areas of the style guide, if `guard` achieves a goal that `if-let` can not then it is acceptable to use. However the reasoning should be documented in the Pull Request and the deviation discussed with other members of the team. 
+
+### Optionals IBOutlets
+
+In the case of IBOutlets Implicitly unwrapped optionals are acceptable. A nil here would imply that the XIB or Storyboard was constructed incorrectly and could still result in a crash whether we're force unwrapping or not. In those situations the following is the preferred implementation.
+
+```swift
+@IBOutlet weak var undoButton: UIButton!
+```
+
+### Optionals In Tests
+
+Implicitly unwrapped optionals can sometimes be useful. They may be used in unit tests, where system under test should never be `nil`. There's no point executing rest of the tests if one of them fails.
 
 ```swift
 var testInstance: SystemUnderTest!
